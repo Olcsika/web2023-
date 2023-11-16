@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css.css"
+    </head>
+    <body>
+        <form action="dolgozat.html">
+            <fieldset style="background-color: chartreuse;">
+                <legend  style="color: darkgreen;"><b>Belépési adatok</b></legend>
+                <label for="nev">Belépési név</label><br>
+                <input style="background-color: greenyellow;" type="text" name="nev" id="nev" placeholder="Próba Jóska"><br>
+                <br>
+                <label for="email"> E-mail</label><br>
+                <input type="email" name="email" id="email" placeholder="nincs@om.hu"><br>
+                <br>
+                <label for="pass">Jelszó</label><br>
+                <input type="password" name="pass" id="pass" placeholder="123456"><br>
+                <br>
+                
+            </fieldset>
+            <br>
+            <fieldset style="background-color: chartreuse;">
+                <legend style="color: darkgreen;"><b>Személyes adatok</b></legend>
+                <label for="szul">Születési dátum</label>
+                <input type="date" id="szul" name="szul"><br>
+                <br>
+                <label>Nem</label><br>
+                <label for="ferfi">Férfi</label>
+                <input type="radio" id="ferfi" name="ferfi">
+                <label for="no">Nő</label>
+                <input type="radio" id="no" name="no">
+                <label for="egy">Egyéb</label>
+                <input type="radio" id="egy" name="egy"><br>
+                <br>
+                <label>Születési hely </label>
+                <select>
+                    <option>Somogyszob</option>
+                    <option>Nagyatád</option>
+                    <option>Segesd</option>
+                </select>
+            </fieldset>
+            <br>
+            <fieldset style="background-color: chartreuse;">
+                <legend style="color: darkgreen;"><b>Egyéb</b></legend>
+                <label>Allergia</label><br>
+                <label for="mogy">Mogyoró</label>
+                <input type="checkbox" id="mogy" name="mogy">
+                <label for="tej">Tejcukor</label>
+                <input type="checkbox" id="tej" name="tej">
+                <label for="glu">Glutén</label>
+                <input type="checkbox" id="glu" name="glu">
+                <label for="bull">Bullshit</label>
+                <input type="checkbox" id="bull" name="bull"><br>
+                <label for="ez">Ezüst</label>
+                <input type="checkbox" id="ez" name="ez">
+                
+
+            </fieldset>
+            <br>
+            <fieldset style="background-color: chartreuse;">
+                <legend style="color: darkgreen;"><b>Gombok</b></legend>
+                <input class="ize" style="background-color: yellowgreen;" type="reset" value="Törlés">
+                <input class="izes" style="background-color: yellowgreen; " type="submit" value="Mentés">
+            </fieldset>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+input
+{
+    font-size: medium;
+}
+body{
+    margin: auto;
+    width: 600px;
+}
+legend
+{
+    border: solid 1px black ;
+    background-color: chartreuse;
+    
+}
+.ize
+{
+    text-align: center;
+}
+.izes
+{
+    text-align: center;
+}
