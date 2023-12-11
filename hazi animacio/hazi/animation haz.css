@@ -1,0 +1,177 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    
+}
+#egbolt,#fu,#ut{
+    position: relative;
+}
+#egbolt{
+    height: 35%;
+    background-color:cornflowerblue;
+    animation-name: eges;
+    animation-duration: 60s;
+}
+#napocska{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 200px;
+    top: 10px;
+    animation-name: napcsi;
+    animation-duration: 50s;
+}
+
+#fu{
+    height: 25%;
+    background-color: darkgreen;
+}
+#ut{
+    height: 40%;
+    width: 100%;
+    background-color:dimgray;
+    box-sizing: border-box;
+    border-top: 10px solid grey;
+    border-bottom: 10px solid grey;
+
+}
+#vonal{
+    box-sizing: border-box;
+    border: dashed white;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    height: 0px;
+}
+#felh{
+    position: absolute;
+    right: 200px;
+    width: 400;
+    height: 200px;
+    top: 10px;
+    animation-name: felho;
+    animation-duration: 120s;
+}
+#imgk{
+    height: 125px;
+    width: 150px;
+    animation-name: ugras;
+    animation-duration: 0.75s;
+    animation-iteration-count: infinite;
+    animation-delay: 12s;
+}
+
+#egesz{
+    height: 150px;
+    width: 50px;
+    background-color:black;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 40px;
+    align-items: center;
+    flex-flow: column;
+}
+#lampa{
+    height: 35px;
+    width: 35px;
+    background-color: darkgray;
+    border-radius: 50%;
+}
+#piros{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color:rgb(58, 1, 1);
+    animation-name: piroska;
+    animation-delay: 1s;
+    animation-duration: 4s;
+
+}
+#sarga{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color:rgb(78, 83, 2);
+    animation-name: sargacska;
+    animation-delay: 5s;
+    animation-duration: 4s;
+
+}
+#zold{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color:rgb(0, 27, 0);
+    animation-name: zoldecske;
+    animation-delay: 6s;
+    animation-duration: 30s;
+
+}
+.lili{
+    position: absolute;
+    top: 20px;
+    left: -200px;
+    animation-name: verseny;
+    animation-duration: 6s;
+    animation-delay: 12s;
+    width: 150px;
+    height: 75px;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    
+}
+.piris{
+    position: absolute;
+    animation-name: verseny;
+    left: -200px;
+    animation-delay: 12s;
+    animation-duration: 4s;
+    width: 150px;
+    height: 75px;
+    top: 140px;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    
+    
+}
+@keyframes verseny{
+    from{transform: translateX(-200px);}
+    to{transform: translateX(2200px);}
+    
+
+
+}
+
+@keyframes ugras{
+    from{transform: translateY(20px);}
+    to{transform: translateY(0px);}
+}
+@keyframes piroska{
+    0%{background-color:rgb(58, 1, 1)}
+    40%{background-color: red}
+    100%{background-color: rgb(58, 1, 1)} 
+}
+@keyframes sargacska{
+    0%{background-color:rgb(78, 83, 2)}
+    40%{background-color: rgb(251, 255, 0)}
+    100%{background-color: rgb(78, 83, 2)} 
+}
+@keyframes zoldecske{
+    0%{background-color:rgb(0, 27, 0)}
+    40%{background-color:chartreuse}
+    100%{background-color: rgb(0, 27, 0)}
+    
+}
+@keyframes felho{
+    from{transform: translateX(0px);}
+    to{transform: translateX(-600px);}
+}
+@keyframes eges{
+    0%{background-color: cornflowerblue;}
+    100%{background-color: rgb(6, 6, 109);}
+}
+@keyframes napcsi{
+    from{transform: translateY(0px);}
+    to{transform: translateY(300px);}
+}
