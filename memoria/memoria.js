@@ -1,5 +1,5 @@
-var kepekUrl=["a.jpg","b.jpg","c.jpeg","d.jpeg","e.jfif","f.jfif","k.jfif","t.jfif","l.png"]
-var parDb=4;
+var kepekUrl=["maci.png","ka.png","as.png","s.png","a.jpg","b.jpg","c.jpeg","d.jpeg","e.jfif","f.jfif","k.jfif","t.jfif","l.png",]
+var parDb=13;
 
 
 function init()
@@ -21,8 +21,20 @@ function kepKirakas()
             let uj=document.createElement("div");
             uj.className="kartya";
             uj.onclick=function(){
-                uj.style.backgroundImage="url(kepek/" + kepekUrl[i]+")";
+                
+                if(kattintas<2)
+                {
+                    uj.style.backgroundImage="url(kepek/" + kepekUrl[i]+")";
+                    uj.dataset.felforditva="true";
+                }
+
                 kattintas++;
+
+                if(kattintas===2)
+                {
+                    setTimeout(visszafordit,2000);
+                }
+                
 
             };
 
@@ -38,6 +50,48 @@ function kepKirakas()
     {
         asztal.appendChild(kartyak[i]);
     }
+    function visszafordit()
+    {
+        const lapok= document.getElementById("asztal").children;
+        console.log(lapok);
+        const aktiv=[];
+        for(let i =0 ;i<lapok.length;i++)
+        {
+            if(lapok[i].dataset.felforditva==="true")
+            {
+                aktiv.push(lapok[i]);
+            }
+        }
+        console.log(aktiv);
+        if(aktiv[0].style.backgroundImage!==aktiv[1].style.backgroundImage)
+        {
+            aktiv[0].style.backgroundImage="";
+            aktiv[1].style.backgroundImage="";
+        }
+        else
+        {
+            aktiv[0].onclick="";
+            aktiv[1].onclick="";
+
+        }
+        aktiv[0].dataset.felforditva="";
+        aktiv[1].dataset.felforditva="";
+        kattintas=0;
+    }
+    function vanMeg()
+    {
+        const lapok= document.getElementById("asztal").children;
+        let darab = 0;
+        for(let i =0 ;i<lapok.length;i++)
+        {
+            if(lapok[i].dataset.felforditva==="")
+            {
+                darab++;
+            }
+        }
+    }
+    return darab>0;
+
 
     function kever(points) {
     for (let i = points.length -1; i > 0; i--) {
