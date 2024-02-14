@@ -1,5 +1,5 @@
-var kepekUrl=["maci.png","ka.png","as.png","s.png","a.jpg","b.jpg","c.jpeg","d.jpeg","e.jfif","f.jfif","k.jfif","t.jfif","l.png",]
-var parDb=13;
+var kepekUrl=["maci.png","ka.png","as.png","s.png","a.jpg","b.jpg","c.jpeg","d.jpeg","e.jfif","f.jfif","k.jfif","t.jfif","l.png","izes.jfif","selena.jpg","tomi.jpeg"]
+var parDb=3;
 
 
 function init()
@@ -7,30 +7,51 @@ function init()
     //console.log("hahó");
     kepKirakas();
 }
-
+var kattintas=0;
+const lathatoLapok=[]
 function kepKirakas()
 {
     let asztal=document.getElementById("asztal");
 
     let kartyak=[];
-    var kattintas=0;
+    
+
     for(let k=0;k<2;k++)
     {
         for(let i=0;i<parDb;i++)
         {
             let uj=document.createElement("div");
             uj.className="kartya";
+
+            uj.dataset.hatterKep="url(kepek/" + kepekUrl[i]+")";
+
             uj.onclick=function(){
-                
-                if(kattintas<2)
+                if(kattintas===0)
                 {
+                    oraastart();
+                }
+                kattintas++;
+                
+                //if (typeof variable === 'undefined' || variable === null) {
+                    // variable is undefined or null}
+                
+                
+                    /*if(lathatoLapok.length<2 && 
+                        !(typeof uj.dataset.felforditva !== 'undifined' && uj.dataset.felforditva !==null) && uj.dataset.felforditva!=="true")
+                    {*/
+                if(lathatoLapok.length<2 && 
+                   !lathatoLapok.includes(uj))
+                {
+                    lathatoLapok.push(uj);
                     uj.style.backgroundImage="url(kepek/" + kepekUrl[i]+")";
                     uj.dataset.felforditva="true";
+                    
+                    console.log(uj);
                 }
+                //console.log(kattintas);
+                
 
-                kattintas++;
-
-                if(kattintas===2)
+                if(lathatoLapok===2)
                 {
                     setTimeout(visszafordit,2000);
                 }
@@ -50,19 +71,20 @@ function kepKirakas()
     {
         asztal.appendChild(kartyak[i]);
     }
-    function visszafordit()
+    const megtalaltParok=[]
+function visszafordit()
+{
+    const lapok= document.getElementById("asztal").children;
+    console.log(lapok);
+    const aktiv=[];
+    for(let i =0 ;i<lathatoLapok.length;i++)
     {
-        const lapok= document.getElementById("asztal").children;
-        console.log(lapok);
-        const aktiv=[];
-        for(let i =0 ;i<lapok.length;i++)
-        {
-            if(lapok[i].dataset.felforditva==="true")
-            {
-                aktiv.push(lapok[i]);
-            }
-        }
-        console.log(aktiv);
+            
+            aktiv.push(lathatoLapok[i]);
+           
+    }
+    if(aktiv.length>2)
+    {
         if(aktiv[0].style.backgroundImage!==aktiv[1].style.backgroundImage)
         {
             aktiv[0].style.backgroundImage="";
@@ -70,37 +92,88 @@ function kepKirakas()
         }
         else
         {
+            //párt találtunk
             aktiv[0].onclick="";
             aktiv[1].onclick="";
-
+            megtalaltParok.push(aktiv[0]);
+            megtalaltParok.push(aktiv[1]);
+            if(!vanMeg())
+            {
+                nyertel();
+            }
+    
         }
         aktiv[0].dataset.felforditva="";
         aktiv[1].dataset.felforditva="";
-        kattintas=0;
-    }
-    function vanMeg()
-    {
-        const lapok= document.getElementById("asztal").children;
-        let darab = 0;
-        for(let i =0 ;i<lapok.length;i++)
+        //mindent leforditunk
+        const lapok=document.getElementById("asztal").children;
+        for (let i=0; i<lapok.length; i++) 
         {
-            if(lapok[i].dataset.felforditva==="")
-            {
-                darab++;
-            }
+            lapok[i].style.backgroundImage="";
+        }
+
+        //megtalált párokat felforditjuk
+        for (let i=0; i<lapok.length; i++) 
+        {
+            megtalaltParok[i].style.backgroundImage=megtalaltParok[i].dataset.hatterKep;
+        }
+
+        lathatoLapok=[];
+    }
+   
+}
+let startTime="";
+
+function oraastart()
+{
+    startTime=new Date();
+
+    setInterval(1000,oraShow)
+}
+function oraShow()
+{
+    const aktualTime=new Date();
+
+    const kulonbseg=aktualTime.startTime;
+    
+    console.log(kulonbseg);
+    const ido= new Date(kulonbseg);
+    const mp = ido.getSeconds();
+    const perc = ido.getMinutes();
+    console.log(ido);
+
+    document.getElementById(ido).innerHTML=perc+":"+(mp<10 ? "0" : "")+mp;
+}
+function nyertel()
+{
+    let uj=document.createElement("div");
+    uj.innerHTML="Game Over";
+
+}
+function vanMeg()
+{
+    const lapok= document.getElementById("asztal").children;
+    let darab = 0;
+    for(let i =0 ;i<lapok.length;i++)
+    {
+        if(lapok[i].dataset.felforditva==="")
+        {
+            darab++;
         }
     }
-    return darab>0;
+        return darab>0;
 
+}
+  
 
-    function kever(points) {
-    for (let i = points.length -1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i+1));
-        let k = points[i];
-        points[i] = points[j];
-        points[j] = k;
-    }
-    return points;
+function kever(points) {
+for (let i = points.length -1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i+1));
+    let k = points[i];
+    points[i] = points[j];
+    points[j] = k;
+}
+return points;
     
 }
 
