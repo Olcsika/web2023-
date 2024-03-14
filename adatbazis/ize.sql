@@ -133,15 +133,19 @@ UPDATE eredeti SET tantargy="angol nyelv" WHERE tantargy="angol";
 UPDATE eredeti SET tantargy="német nyelv" WHERE tantargy="német";
 UPDATE eredeti SET tantargy="IKT projektmunka" WHERE tantargy="IKT Projektmunka,";
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> c79cae5fffa51e6817134abb09b47308c37b7acf
 INSERT INTO tantargy (nev)
 	SELECT DISTINCT tantargy 
 		FROM eredeti 
 		ORDER BY tantargy;
 		
 ALTER TABLE eredeti ADD tantargyid int; 
+<<<<<<< HEAD
 
 SELECT tantargy.id FROM tantargy,eredeti WHERE nev=tantargy;
 
@@ -211,3 +215,15 @@ INSERT INTO ofo
 	SELECT DISTINCT oktato
 		FROM eredeti
 		order by ofo;
+=======
+SELECT tantargy.id FROM tantargy,eredeti WHERE nev=tantargy;
+
+UPDATE eredeti SET tantargyid=
+			(SELECT tantargy.id 
+				FROM tantargy,eredeti 
+					WHERE nev=tantargy Limit 1); 
+					
+SELECT tantargy, nev 
+		FROM tantargy,eredeti 
+			WHERE tantargy.id=tantargyid;
+>>>>>>> c79cae5fffa51e6817134abb09b47308c37b7acf
