@@ -16,8 +16,12 @@
     <div class="gomb" id="Martin" onclick="feladat4()">4.Feladat</div>
     <div class="megoldas" id="feladat4"></div>
     <div class="gomb" id="Martin" onclick="feladat5()">5.Feladat</div>
-    Táncnév: <input type="text">
+    Táncnév: <input type="text" id="tancNev" oninput="feladat5()">
     <div class="megoldas" id="feladat5"></div>
+    <div class="gomb" id="Martin" onclick="feladat6()">6.Feladat</div>
+    <div class="megoldas" id="feladat6"></div>
+    <div class="gomb" id="Martin" onclick="feladat7()">7.Feladat</div>
+    <div class="megoldas" id="feladat7"></div>
         <script>
         class  Par
         {
@@ -100,25 +104,62 @@
 
 
             //console.log(villmaTancai);
-            ir("feladat4","Vima a következő táncokat táncolta: "+tancNevek  );
+            ir("feladat4","Vima a következő táncokat táncolta: " +tancNevek  );
 
         }
         function feladat5()
         {
+            let nev = document.getElementById("tancNev").value;
+
             const villmaTancai=tancok.filter(function(v){
-                if(v.lany=="Vilma")
-                return v;
-            })
-            const tancNevek=[];
-            villmaTancai.forEach(function(v){
-                tancNevek.push(v.tanc);
+                if(v.lany=="Vilma" && v.tanc==nev)
+                    return v;
+                
 
             });
+            console.log(villmaTancai);
+            console.log(nev);
+            
+            if(villmaTancai.length===0)
+            {
+                ir("feladat5","Vilma ne táncolt "+ nev +" -t");
 
+            }
+            else
+            {
+                ir("feladat5","A " + nev +" bemutatóján Vima párja "+ villmaTancai[0].fiu  +" volt.");
+            }
+            console.log(villmaTancai);
+           
 
-            //console.log(villmaTancai);
-            ir("feladat5","Vima a következő táncokat táncolta: "+tancNevek  );
+        }
+        function feladat6()
+        {
+            const lany=[];
+            const fiu=[];
+            tancok.forEach(function(value){
+            
+                if(!lany.includes(value.lany))
+                {
+                    lany.push(value.lany)
 
+                }
+                fiu.push(value.fiu);
+                
+                if(!fiu.includes(value.lany))
+                {
+                    fiu.push(value.lany)
+                }
+            });
+        }
+
+        function feladat7()
+        {
+            const lanyok = {};
+            tancok.forEach(function(v){
+                lanyok[v.lany]++;
+            })
+            console.log(lanyok)
         }
     </script>
 
